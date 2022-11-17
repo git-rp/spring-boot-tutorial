@@ -1,0 +1,56 @@
+server:
+  port: '8080'
+spring:
+  profiles:
+    active: dev
+---
+
+spring:
+  profiles: dev
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: admin
+    url: jdbc:postgresql://localhost:5432/testdb
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+welcome:
+  message: Hello welocme to properties
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+---
+spring:
+  profiles: qa
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: admin
+    url: jdbc:postgresql://localhost:5432/testdb-qa
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+welcome:
+  message: Hello welocme to properties
+
+
+---
+  spring:
+    profiles: prod
+    datasource:
+      driver-class-name: org.postgresql.Driver
+      username: admin
+      url: jdbc:postgresql://localhost:5432/testdb-prod
+      password: admin
+    jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: 'true'
+  welcome:
+    message: Hello welocme to properties
